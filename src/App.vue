@@ -7,6 +7,8 @@
       { codigo: 'MXN', texto: 'Peso Mexicano'},
       { codigo: 'EUR', texto: 'Euro'},
       { codigo: 'GBP', texto: 'Libra Esterlina'},
+      { codigo: 'BRL', texto: 'Real Brasileño'},
+      { codigo: 'PEN', texto: 'Sol Peruano'},
   ])
 
   const criptomonedas = ref([])
@@ -47,8 +49,6 @@
     cotizacion.value = data.DISPLAY[criptomoneda][moneda]
 
   } 
-  
-
 
 </script>
 
@@ -94,8 +94,23 @@
         </div>
 
         <input type="submit" value="Cotizar" />
-      </form>     
+      </form> 
+      
+      <div class ="contenedor-resultado">
+        <h2>Cotización</h2>
+        <div class="resultado">
+          <img 
+            :src="'https://cryptocompare.com/' + cotizacion.IMAGEURL" 
+            alt="figura cripto">
+          <div>
+            <p>El precio es de: <span>{{ cotizacion.PRICE }}</span></p>
+            <p>Precio más alto del día: <span>{{ cotizacion.HIGHDAY }}</span></p>
+            <p>Precio más bajo del día: <span>{{ cotizacion.LOWDAY }}</span></p>
+            <p>Variación últimas 24 horas: <span>{{ cotizacion.CHANGEPCT24HOUR }}%</span></p>
+            <p>Última actualización: <span>{{ cotizacion.LASTUPDATE }}</span></p>
+          </div>
+        </div>
+      </div>
     </div>
-    
   </div>
 </template>
